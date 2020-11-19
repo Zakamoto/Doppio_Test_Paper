@@ -1,0 +1,504 @@
+{
+  "collection": {
+    "_": {
+      "postman_id": "f1f58900-e709-48a1-ad94-61c9701564e7"
+    },
+    "item": [
+      {
+        "id": "3f872164-7c9c-46d1-9e73-8cc9dc3298fc",
+        "name": "1_Get_Todos",
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "todos"
+            ],
+            "host": [
+              "jsonplaceholder",
+              "typicode",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "method": "GET"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "b0e6cc0c-cba5-44c4-8dee-64ce230b2964",
+              "type": "text/javascript",
+              "exec": [
+                ""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "7102646a-2be6-4ee5-8f7b-4a7e338fc416",
+        "name": "2_Post_Assertions",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "path": [
+              "post"
+            ],
+            "host": [
+              "httpbin",
+              "org"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "method": "POST"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "52a11402-8a8a-4f01-b4a5-f6fe1beca1eb",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"POST Response Status Is 200\", function () {\r",
+                "    pm.response.to.have.status(200);\r",
+                "});\r",
+                "\r",
+                "pm.test(\"POST Response Header ContentType Is application/json\", () => {\r",
+                "  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+                "});\r",
+                "\r",
+                "pm.test(\"POST Response Header Content-Length Is 463\", () => {\r",
+                "  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+                "});\r",
+                "\r",
+                "pm.test(\"POST Response Header Connection Is keep-alive\", () => {\r",
+                "  pm.expect(pm.response.headers.get('Connection')).to.eql('keep-alive');\r",
+                "});\r",
+                "\r",
+                "pm.test(\"POST Response Header Server Is gunicorn/19.9.0\", () => {\r",
+                "  pm.expect(pm.response.headers.get('Server')).to.eql('gunicorn/19.9.0');\r",
+                "});\r",
+                "\r",
+                "pm.test(\"POST Response Body url Is http://httpbin.org/post\", function () {\r",
+                "    var jsonData = pm.response.json();\r",
+                "    pm.expect(jsonData.url).to.eql(\"http://httpbin.org/post\");\r",
+                "});\r",
+                "\r",
+                ""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "107bd2ff-0537-48db-a6f8-21793363f835",
+        "name": "3_Basic_Authen",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "path": [
+              "basic-auth",
+              "user",
+              "pass"
+            ],
+            "host": [
+              "httpbin",
+              "org"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "method": "GET",
+          "auth": {
+            "type": "basic",
+            "basic": [
+              {
+                "type": "string",
+                "value": "pass",
+                "key": "password"
+              },
+              {
+                "type": "string",
+                "value": "user",
+                "key": "username"
+              }
+            ]
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "91e37c66-f5be-4cc3-a80c-aa7d307f6fc0",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"GET Response Status Is 200\", function () {\r",
+                "    pm.response.to.have.status(200);\r",
+                "});\r",
+                "\r",
+                "pm.test(\"GET Response Body authenticated Is true\", function () {\r",
+                "    var jsonData = pm.response.json();\r",
+                "    pm.expect(jsonData.authenticated).to.eql(true);\r",
+                "});\r",
+                "\r",
+                "pm.test(\"GET Response Body user Is user\", function () {\r",
+                "    var jsonData = pm.response.json();\r",
+                "    pm.expect(jsonData.user).to.eql(\"user\");\r",
+                "});"
+              ],
+              "_lastExecutionId": "24fa96a2-f7f4-4907-9ddc-2b5f9adfd9ee"
+            }
+          }
+        ]
+      }
+    ],
+    "event": [],
+    "protocolProfileBehavior": {},
+    "variable": [],
+    "info": {
+      "_postman_id": "f1f58900-e709-48a1-ad94-61c9701564e7",
+      "name": "Doppio_Test_Paper",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    }
+  },
+  "environment": {
+    "id": "fa0b642a-c24f-4865-86ea-6d8a7bd908e7",
+    "values": []
+  },
+  "globals": {
+    "id": "8f1d1614-8eac-45c1-941e-4528475cce30",
+    "values": []
+  },
+  "run": {
+    "stats": {
+      "iterations": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "items": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "scripts": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequests": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "requests": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "tests": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "assertions": {
+        "total": 3,
+        "pending": 0,
+        "failed": 0
+      },
+      "testScripts": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequestScripts": {
+        "total": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "timings": {
+      "responseAverage": 637,
+      "responseMin": 637,
+      "responseMax": 637,
+      "responseSd": 0,
+      "dnsAverage": 0,
+      "dnsMin": 0,
+      "dnsMax": 0,
+      "dnsSd": 0,
+      "firstByteAverage": 0,
+      "firstByteMin": 0,
+      "firstByteMax": 0,
+      "firstByteSd": 0,
+      "started": 1605791012347,
+      "completed": 1605791013129
+    },
+    "executions": [
+      {
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 1,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "b58ca140-6e8d-4929-be1d-4fb828861e64",
+          "httpRequestId": "19acdaff-19ed-48d6-bb12-29c006f6caf8"
+        },
+        "item": {
+          "id": "107bd2ff-0537-48db-a6f8-21793363f835",
+          "name": "3_Basic_Authen",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "path": [
+                "basic-auth",
+                "user",
+                "pass"
+              ],
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "type": "string",
+                  "value": "pass",
+                  "key": "password"
+                },
+                {
+                  "type": "string",
+                  "value": "user",
+                  "key": "username"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "91e37c66-f5be-4cc3-a80c-aa7d307f6fc0",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"GET Response Status Is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"GET Response Body authenticated Is true\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.authenticated).to.eql(true);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"GET Response Body user Is user\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.user).to.eql(\"user\");\r",
+                  "});"
+                ],
+                "_lastExecutionId": "24fa96a2-f7f4-4907-9ddc-2b5f9adfd9ee"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "path": [
+              "basic-auth",
+              "user",
+              "pass"
+            ],
+            "host": [
+              "httpbin",
+              "org"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Basic dXNlcjpwYXNz",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.26.8",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "446304a1-9be0-4354-a80f-fdb691b7d342",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "httpbin.org",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "GET",
+          "auth": {
+            "type": "basic",
+            "basic": [
+              {
+                "type": "string",
+                "value": "pass",
+                "key": "password"
+              },
+              {
+                "type": "string",
+                "value": "user",
+                "key": "username"
+              }
+            ]
+          }
+        },
+        "response": {
+          "id": "c4a06601-9081-435a-a6d7-0d44e1c5b25b",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 19 Nov 2020 13:03:32 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "47"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Server",
+              "value": "gunicorn/19.9.0"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Access-Control-Allow-Credentials",
+              "value": "true"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              10,
+              32,
+              32,
+              34,
+              97,
+              117,
+              116,
+              104,
+              101,
+              110,
+              116,
+              105,
+              99,
+              97,
+              116,
+              101,
+              100,
+              34,
+              58,
+              32,
+              116,
+              114,
+              117,
+              101,
+              44,
+              32,
+              10,
+              32,
+              32,
+              34,
+              117,
+              115,
+              101,
+              114,
+              34,
+              58,
+              32,
+              34,
+              117,
+              115,
+              101,
+              114,
+              34,
+              10,
+              125,
+              10
+            ]
+          },
+          "cookie": [],
+          "responseTime": 637,
+          "responseSize": 47
+        },
+        "id": "107bd2ff-0537-48db-a6f8-21793363f835",
+        "assertions": [
+          {
+            "assertion": "GET Response Status Is 200",
+            "skipped": false
+          },
+          {
+            "assertion": "GET Response Body authenticated Is true",
+            "skipped": false
+          },
+          {
+            "assertion": "GET Response Body user Is user",
+            "skipped": false
+          }
+        ]
+      }
+    ],
+    "transfers": {
+      "responseTotal": 47
+    },
+    "failures": [],
+    "error": null
+  }
+}

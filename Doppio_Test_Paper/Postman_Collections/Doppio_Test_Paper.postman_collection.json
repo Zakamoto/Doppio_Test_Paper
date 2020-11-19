@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "f1f58900-e709-48a1-ad94-61c9701564e7",
+		"name": "Doppio_Test_Paper",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1_Get_Todos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b0e6cc0c-cba5-44c4-8dee-64ce230b2964",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/todos",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2_Post_Assertions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52a11402-8a8a-4f01-b4a5-f6fe1beca1eb",
+						"exec": [
+							"pm.test(\"POST Response Status Is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"POST Response Header ContentType Is application/json\", () => {\r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"POST Response Header Content-Length Is 463\", () => {\r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"POST Response Header Connection Is keep-alive\", () => {\r",
+							"  pm.expect(pm.response.headers.get('Connection')).to.eql('keep-alive');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"POST Response Header Server Is gunicorn/19.9.0\", () => {\r",
+							"  pm.expect(pm.response.headers.get('Server')).to.eql('gunicorn/19.9.0');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"POST Response Body url Is http://httpbin.org/post\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.url).to.eql(\"http://httpbin.org/post\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://httpbin.org/post",
+					"protocol": "http",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3_Basic_Authen",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "91e37c66-f5be-4cc3-a80c-aa7d307f6fc0",
+						"exec": [
+							"pm.test(\"GET Response Status Is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"GET Response Body authenticated Is true\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.authenticated).to.eql(true);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"GET Response Body user Is user\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.user).to.eql(\"user\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "pass",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://httpbin.org/basic-auth/user/pass",
+					"protocol": "http",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"basic-auth",
+						"user",
+						"pass"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

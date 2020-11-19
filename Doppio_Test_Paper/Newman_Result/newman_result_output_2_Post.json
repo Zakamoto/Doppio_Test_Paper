@@ -1,0 +1,945 @@
+{
+  "collection": {
+    "_": {
+      "postman_id": "f1f58900-e709-48a1-ad94-61c9701564e7"
+    },
+    "item": [
+      {
+        "id": "d77daff7-d672-4ed8-bdd3-e7a892490251",
+        "name": "1_Get_Todos",
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "todos"
+            ],
+            "host": [
+              "jsonplaceholder",
+              "typicode",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "method": "GET"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "b0e6cc0c-cba5-44c4-8dee-64ce230b2964",
+              "type": "text/javascript",
+              "exec": [
+                ""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "b6ff91ca-0657-40ca-8180-627ae5f454b1",
+        "name": "2_Post_Assertions",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "path": [
+              "post"
+            ],
+            "host": [
+              "httpbin",
+              "org"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "method": "POST"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "52a11402-8a8a-4f01-b4a5-f6fe1beca1eb",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"POST Response Status Is 200\", function () {\r",
+                "    pm.response.to.have.status(200);\r",
+                "});\r",
+                "\r",
+                "pm.test(\"POST Response Header ContentType Is application/json\", () => {\r",
+                "  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+                "});\r",
+                "\r",
+                "pm.test(\"POST Response Header Content-Length Is 463\", () => {\r",
+                "  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+                "});\r",
+                "\r",
+                "pm.test(\"POST Response Header Connection Is keep-alive\", () => {\r",
+                "  pm.expect(pm.response.headers.get('Connection')).to.eql('keep-alive');\r",
+                "});\r",
+                "\r",
+                "pm.test(\"POST Response Header Server Is gunicorn/19.9.0\", () => {\r",
+                "  pm.expect(pm.response.headers.get('Server')).to.eql('gunicorn/19.9.0');\r",
+                "});\r",
+                "\r",
+                "pm.test(\"POST Response Body url Is http://httpbin.org/post\", function () {\r",
+                "    var jsonData = pm.response.json();\r",
+                "    pm.expect(jsonData.url).to.eql(\"http://httpbin.org/post\");\r",
+                "});\r",
+                "\r",
+                ""
+              ],
+              "_lastExecutionId": "f6439d08-9813-4209-8334-de83d73e1b0e"
+            }
+          }
+        ]
+      },
+      {
+        "id": "5293cb6d-84b9-43a3-a44b-17e4bdfc888f",
+        "name": "3_Basic_Authen",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "path": [
+              "basic-auth",
+              "user",
+              "pass"
+            ],
+            "host": [
+              "httpbin",
+              "org"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "method": "GET",
+          "auth": {
+            "type": "basic",
+            "basic": [
+              {
+                "type": "string",
+                "value": "pass",
+                "key": "password"
+              },
+              {
+                "type": "string",
+                "value": "user",
+                "key": "username"
+              }
+            ]
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "91e37c66-f5be-4cc3-a80c-aa7d307f6fc0",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"GET Response Status Is 200\", function () {\r",
+                "    pm.response.to.have.status(200);\r",
+                "});\r",
+                "\r",
+                "pm.test(\"GET Response Body authenticated Is true\", function () {\r",
+                "    var jsonData = pm.response.json();\r",
+                "    pm.expect(jsonData.authenticated).to.eql(true);\r",
+                "});\r",
+                "\r",
+                "pm.test(\"GET Response Body user Is user\", function () {\r",
+                "    var jsonData = pm.response.json();\r",
+                "    pm.expect(jsonData.user).to.eql(\"user\");\r",
+                "});"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "event": [],
+    "protocolProfileBehavior": {},
+    "variable": [],
+    "info": {
+      "_postman_id": "f1f58900-e709-48a1-ad94-61c9701564e7",
+      "name": "Doppio_Test_Paper",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    }
+  },
+  "environment": {
+    "id": "3a065e93-2606-4de8-9011-7728ddd6601f",
+    "values": []
+  },
+  "globals": {
+    "id": "238cf4f8-7faf-43df-8ac3-d8f6e8fa9dd9",
+    "values": []
+  },
+  "run": {
+    "stats": {
+      "iterations": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "items": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "scripts": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequests": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "requests": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "tests": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "assertions": {
+        "total": 6,
+        "pending": 0,
+        "failed": 0
+      },
+      "testScripts": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequestScripts": {
+        "total": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "timings": {
+      "responseAverage": 634,
+      "responseMin": 634,
+      "responseMax": 634,
+      "responseSd": 0,
+      "dnsAverage": 0,
+      "dnsMin": 0,
+      "dnsMax": 0,
+      "dnsSd": 0,
+      "firstByteAverage": 0,
+      "firstByteMin": 0,
+      "firstByteMax": 0,
+      "firstByteSd": 0,
+      "started": 1605790969032,
+      "completed": 1605790969822
+    },
+    "executions": [
+      {
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 1,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "6b47d003-395b-4c66-b585-ecefae127770",
+          "httpRequestId": "b51edeba-899f-427b-b31a-e3a43bee6e5a"
+        },
+        "item": {
+          "id": "b6ff91ca-0657-40ca-8180-627ae5f454b1",
+          "name": "2_Post_Assertions",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "path": [
+                "post"
+              ],
+              "host": [
+                "httpbin",
+                "org"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "52a11402-8a8a-4f01-b4a5-f6fe1beca1eb",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"POST Response Status Is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"POST Response Header ContentType Is application/json\", () => {\r",
+                  "  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"POST Response Header Content-Length Is 463\", () => {\r",
+                  "  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"POST Response Header Connection Is keep-alive\", () => {\r",
+                  "  pm.expect(pm.response.headers.get('Connection')).to.eql('keep-alive');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"POST Response Header Server Is gunicorn/19.9.0\", () => {\r",
+                  "  pm.expect(pm.response.headers.get('Server')).to.eql('gunicorn/19.9.0');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"POST Response Body url Is http://httpbin.org/post\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.url).to.eql(\"http://httpbin.org/post\");\r",
+                  "});\r",
+                  "\r",
+                  ""
+                ],
+                "_lastExecutionId": "f6439d08-9813-4209-8334-de83d73e1b0e"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "path": [
+              "post"
+            ],
+            "host": [
+              "httpbin",
+              "org"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.26.8",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "1262d3a6-9aab-43ae-b42e-c6d9d52394f2",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "httpbin.org",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": 0,
+              "system": true
+            }
+          ],
+          "method": "POST"
+        },
+        "response": {
+          "id": "a625d0ec-cdbf-437d-b4c4-ea1a5fb5211b",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 19 Nov 2020 13:02:49 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "497"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Server",
+              "value": "gunicorn/19.9.0"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Access-Control-Allow-Credentials",
+              "value": "true"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              10,
+              32,
+              32,
+              34,
+              97,
+              114,
+              103,
+              115,
+              34,
+              58,
+              32,
+              123,
+              125,
+              44,
+              32,
+              10,
+              32,
+              32,
+              34,
+              100,
+              97,
+              116,
+              97,
+              34,
+              58,
+              32,
+              34,
+              34,
+              44,
+              32,
+              10,
+              32,
+              32,
+              34,
+              102,
+              105,
+              108,
+              101,
+              115,
+              34,
+              58,
+              32,
+              123,
+              125,
+              44,
+              32,
+              10,
+              32,
+              32,
+              34,
+              102,
+              111,
+              114,
+              109,
+              34,
+              58,
+              32,
+              123,
+              125,
+              44,
+              32,
+              10,
+              32,
+              32,
+              34,
+              104,
+              101,
+              97,
+              100,
+              101,
+              114,
+              115,
+              34,
+              58,
+              32,
+              123,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              65,
+              99,
+              99,
+              101,
+              112,
+              116,
+              34,
+              58,
+              32,
+              34,
+              42,
+              47,
+              42,
+              34,
+              44,
+              32,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              65,
+              99,
+              99,
+              101,
+              112,
+              116,
+              45,
+              69,
+              110,
+              99,
+              111,
+              100,
+              105,
+              110,
+              103,
+              34,
+              58,
+              32,
+              34,
+              103,
+              122,
+              105,
+              112,
+              44,
+              32,
+              100,
+              101,
+              102,
+              108,
+              97,
+              116,
+              101,
+              44,
+              32,
+              98,
+              114,
+              34,
+              44,
+              32,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              67,
+              97,
+              99,
+              104,
+              101,
+              45,
+              67,
+              111,
+              110,
+              116,
+              114,
+              111,
+              108,
+              34,
+              58,
+              32,
+              34,
+              110,
+              111,
+              45,
+              99,
+              97,
+              99,
+              104,
+              101,
+              34,
+              44,
+              32,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              67,
+              111,
+              110,
+              116,
+              101,
+              110,
+              116,
+              45,
+              76,
+              101,
+              110,
+              103,
+              116,
+              104,
+              34,
+              58,
+              32,
+              34,
+              48,
+              34,
+              44,
+              32,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              72,
+              111,
+              115,
+              116,
+              34,
+              58,
+              32,
+              34,
+              104,
+              116,
+              116,
+              112,
+              98,
+              105,
+              110,
+              46,
+              111,
+              114,
+              103,
+              34,
+              44,
+              32,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              80,
+              111,
+              115,
+              116,
+              109,
+              97,
+              110,
+              45,
+              84,
+              111,
+              107,
+              101,
+              110,
+              34,
+              58,
+              32,
+              34,
+              49,
+              50,
+              54,
+              50,
+              100,
+              51,
+              97,
+              54,
+              45,
+              57,
+              97,
+              97,
+              98,
+              45,
+              52,
+              51,
+              97,
+              101,
+              45,
+              98,
+              52,
+              50,
+              101,
+              45,
+              99,
+              54,
+              100,
+              57,
+              100,
+              53,
+              50,
+              51,
+              57,
+              52,
+              102,
+              50,
+              34,
+              44,
+              32,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              85,
+              115,
+              101,
+              114,
+              45,
+              65,
+              103,
+              101,
+              110,
+              116,
+              34,
+              58,
+              32,
+              34,
+              80,
+              111,
+              115,
+              116,
+              109,
+              97,
+              110,
+              82,
+              117,
+              110,
+              116,
+              105,
+              109,
+              101,
+              47,
+              55,
+              46,
+              50,
+              54,
+              46,
+              56,
+              34,
+              44,
+              32,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              88,
+              45,
+              65,
+              109,
+              122,
+              110,
+              45,
+              84,
+              114,
+              97,
+              99,
+              101,
+              45,
+              73,
+              100,
+              34,
+              58,
+              32,
+              34,
+              82,
+              111,
+              111,
+              116,
+              61,
+              49,
+              45,
+              53,
+              102,
+              98,
+              54,
+              54,
+              99,
+              102,
+              57,
+              45,
+              52,
+              51,
+              98,
+              53,
+              97,
+              56,
+              53,
+              49,
+              50,
+              51,
+              100,
+              54,
+              98,
+              49,
+              48,
+              97,
+              50,
+              53,
+              102,
+              97,
+              102,
+              52,
+              99,
+              57,
+              34,
+              10,
+              32,
+              32,
+              125,
+              44,
+              32,
+              10,
+              32,
+              32,
+              34,
+              106,
+              115,
+              111,
+              110,
+              34,
+              58,
+              32,
+              110,
+              117,
+              108,
+              108,
+              44,
+              32,
+              10,
+              32,
+              32,
+              34,
+              111,
+              114,
+              105,
+              103,
+              105,
+              110,
+              34,
+              58,
+              32,
+              34,
+              49,
+              56,
+              51,
+              46,
+              56,
+              56,
+              46,
+              54,
+              54,
+              46,
+              49,
+              56,
+              55,
+              34,
+              44,
+              32,
+              10,
+              32,
+              32,
+              34,
+              117,
+              114,
+              108,
+              34,
+              58,
+              32,
+              34,
+              104,
+              116,
+              116,
+              112,
+              58,
+              47,
+              47,
+              104,
+              116,
+              116,
+              112,
+              98,
+              105,
+              110,
+              46,
+              111,
+              114,
+              103,
+              47,
+              112,
+              111,
+              115,
+              116,
+              34,
+              10,
+              125,
+              10
+            ]
+          },
+          "cookie": [],
+          "responseTime": 634,
+          "responseSize": 497
+        },
+        "id": "b6ff91ca-0657-40ca-8180-627ae5f454b1",
+        "assertions": [
+          {
+            "assertion": "POST Response Status Is 200",
+            "skipped": false
+          },
+          {
+            "assertion": "POST Response Header ContentType Is application/json",
+            "skipped": false
+          },
+          {
+            "assertion": "POST Response Header Content-Length Is 463",
+            "skipped": false
+          },
+          {
+            "assertion": "POST Response Header Connection Is keep-alive",
+            "skipped": false
+          },
+          {
+            "assertion": "POST Response Header Server Is gunicorn/19.9.0",
+            "skipped": false
+          },
+          {
+            "assertion": "POST Response Body url Is http://httpbin.org/post",
+            "skipped": false
+          }
+        ]
+      }
+    ],
+    "transfers": {
+      "responseTotal": 497
+    },
+    "failures": [],
+    "error": null
+  }
+}
