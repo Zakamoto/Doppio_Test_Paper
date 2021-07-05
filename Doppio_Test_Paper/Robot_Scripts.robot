@@ -1,11 +1,3 @@
-*** Settings ***
-Library  SeleniumLibrary
-Library  RequestsLibrary
-Library  Collections
-Library  JSONLibrary
-Library  String
-Library  BuiltIn
-
 *** Variables ***
 ${hostURL}  https://jsonplaceholder.typicode.com
 ${pathURLUser}  /users
